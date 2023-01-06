@@ -1,11 +1,11 @@
 import React from'react';
-import ReactDOM1 from 'react-dom/client';
+import ReactDOM from 'react-dom/client';
+import HeaderComponent from './components/Header'
 
-const HeaderComponent = () => <h1>Heading</h1>
 
-const HeaderComponent2 =  () => {
-    return <div>{<HeaderComponent/>} <h2>Heading 2</h2></div>
+const Components =  () => {
+    return <div>{<HeaderComponent/>}</div>
 }
 
-const root = ReactDOM1.createRoot(document.getElementById('root'))
-root.render(<HeaderComponent2/>)
+const root = ReactDOM.createRoot(document.getElementById('root'))
+root.render(Components())
