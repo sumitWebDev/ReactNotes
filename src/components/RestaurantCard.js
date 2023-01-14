@@ -1,6 +1,18 @@
 
 import {IMG_CDN_URL} from '../../config'
+{
 
+    var obj = {name: 'Sumit', title: 'das'}
+
+    function iterate ({name,title}){
+
+        console.log (name)
+    }
+
+    var learn = iterate({...obj})
+
+    console.log(learn)
+}
 
 const RestaurantCard = ({
     name,
@@ -17,5 +29,13 @@ const RestaurantCard = ({
         </div>
     )
 }
+// const RestaurantCard = ({name}) => { // ===> Object Destructuring const {restaurant} = props;
+//     const {name} = restaurant;
+//     return (
+//         <div className='card'>
+//             <h2>{name}</h2>
+//         </div>
+//     )
+// }
 
 export default RestaurantCard
