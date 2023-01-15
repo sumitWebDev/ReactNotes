@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { IMG_CDN_URL } from '../../config'
-
+import Shimmer from './Shimmer'
 
 const RestaurantMenu = () => {
     const { id } = useParams();
-    const [restaurant, setRestaurant] = useState({})
+    const [restaurant, setRestaurant] = useState(null)
 
     useEffect(() => {
         getRestaurantsInfo()
@@ -17,11 +17,12 @@ const RestaurantMenu = () => {
         console.log(json);
         setRestaurant(json.data);
     }
-    return (
+
+    return (restaurant === null)? <Shimmer /> :(
         <>
-            <h1>Restaurant id : {id}</h1>
-            <h2>{restaurant.name}</h2>
+            <h1>{restaurant.name}</h1>
             <img src={IMG_CDN_URL + restaurant.cloudinaryImageId} />
+
         </>
     )
 
