@@ -42,37 +42,37 @@ const AppLayout = () => { //Func Component
     )
 }
 
-const appRouter = createBrowserRouter ([
+const appRouter = createBrowserRouter([
     {
-        path : '/',
-        element: <AppLayout/>,
-        errorElement : <Error />,
-        children :[
+        path: '/',
+        element: <AppLayout />,
+        errorElement: <Error />,
+        children: [
             {
                 path: '/about',
-                element : <About/>
+                element: <About />
             },
             {
                 path: '/contact',
-                element : <Contact/>
+                element: <Contact />
             },
             {
                 path: '/',
-                element : <Body/>
+                element: <Body />
             },
             {
                 path: '/restaurant/:id',
-                element : <RestaurantMenu/>
+                element: <RestaurantMenu />
             },
         ]
     },
     {
         path: '/about',
-        element : <About/>
+        element: <About />
     },
     {
         path: '/contact',
-        element : <Contact/>
+        element: <Contact />
     },
 
 ])

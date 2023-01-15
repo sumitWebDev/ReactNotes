@@ -2,13 +2,15 @@ import RestaurantCard from './RestaurantCard'
 import restaurantLists from '../data/restaurant-data'
 import { useState, useEffect } from 'react';
 import Shimmer from './Shimmer';
-
+import { Link } from 'react-router-dom'
 const restaurantList = restaurantLists;
 
 
 function filterData(searchText, restaurants) {
-    return restaurants.filter((restaurant) => {if(searchText)
-        return restaurant.data.name.includes(searchText)})
+    return restaurants.filter((restaurant) => {
+        if (searchText)
+            return restaurant.data.name.includes(searchText)
+    })
 }
 
 
@@ -17,21 +19,21 @@ const Body = () => {
 
     const [allRestaurants, setAllRestaurants] = useState([]);
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
-    useEffect(()=>{
+    useEffect(() => {
         getRestaurants()
-    },[]);
+    }, []);
 
     async function getRestaurants() {
 
-        const data = await fetch ( "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.60834135798303&lng=88.33092369139194&page_type=DESKTOP_WEB_LISTING");
+        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.60834135798303&lng=88.33092369139194&page_type=DESKTOP_WEB_LISTING");
         const json = await data.json();
-        console.log(json.data.cards[2].data.data.cards)
-        setAllRestaurants(json.data.cards[2].data.data.cards)
-        setFilteredRestaurants(json.data.cards[2].data.data.cards)
+        console.log(json.data.cards[0].data.data.cards)
+        setAllRestaurants(json.data.cards[0].data.data.cards)
+        setFilteredRestaurants(json.data.cards[0].data.data.cards)
     }
 
-    if(!allRestaurants) return null
-    return (allRestaurants.length === 0) ? <Shimmer/> :  (
+    if (!allRestaurants) return null
+    return (allRestaurants.length === 0) ? <Shimmer /> : (
         <>
             <div class="search-container">
                 <input type="text" className='search-input' placeholder="Search" value={searchText}
@@ -45,12 +47,12 @@ const Body = () => {
                     () => {
 
                         const data = filterData(searchText, allRestaurants);
-                        if(data.length>0)
-                        setFilteredRestaurants(data);
+                        if (data.length > 0)
+                            setFilteredRestaurants(data);
                         else if (searchText === '')
-                        setFilteredRestaurants(allRestaurants)
+                            setFilteredRestaurants(allRestaurants)
                         else
-                        setFilteredRestaurants([])
+                            setFilteredRestaurants([])
                     }}>
 
                     Search
@@ -61,10 +63,18 @@ const Body = () => {
                 {
                     (filteredRestaurants.length > 0) ? (filteredRestaurants.map((restaurant) =>
                     //Using component approach
-                    // { return <RestaurantCard {...restaurant.data} key={restaurant.data.id} /> }
+                    {
+                        return (
+
+                            <Link to={`/restaurant/${restaurant.data.id}`} key={restaurant.data.id} >
+                                <RestaurantCard {...restaurant.data} />
+                            </Link>
+
+                        )
+                    }
 
                         //Using normal function Approach
-                        RestaurantCard({...restaurant.data})
+                        // RestaurantCard({...restaurant.data} )
                     )) : <h1>No matching records</h1>
                 }
             </div>
