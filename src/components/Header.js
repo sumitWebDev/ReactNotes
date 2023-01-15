@@ -7,6 +7,7 @@ const Title = () => <a href="/" > <img src={logo} width='100px' /></a>
 
 const Header = function () {
     const [loggedIn, setLoggedIn] = useState(false);
+    console.log('header')
     return (
         <div className='header'>
             <Title />

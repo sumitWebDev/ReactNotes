@@ -1,18 +1,5 @@
 
 import { IMG_CDN_URL } from '../../config'
-{
-
-    var obj = { name: 'Sumit', title: 'das' }
-
-    function iterate({ name, title }) {
-
-        console.log(name)
-    }
-
-    var learn = iterate({ ...obj })
-
-    console.log(learn)
-}
 
 const RestaurantCard = ({
     name,
