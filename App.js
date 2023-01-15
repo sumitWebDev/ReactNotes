@@ -6,7 +6,7 @@ import Body from './src/components/Body'
 import Footer from './src/components/Footer'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import About from './src/components/About';
-
+import Error from '/src/components/Error'
 /**
  * Header
  * - Logo
@@ -43,12 +43,14 @@ const AppLayout = () => { //Func Component
 const appRouter = createBrowserRouter ([
     {
         path : '/',
-        element: <AppLayout/>
+        element: <AppLayout/>,
+        errorElement : <Error />
     },
     {
         path: '/about',
         element : <About/>
-    }
+    },
+
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
