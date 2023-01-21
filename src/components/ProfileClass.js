@@ -5,19 +5,23 @@ class Profile extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            count: 0,
-            count1: 0
+            userInfo: {}
         };
+    }
+    async componentDidMount (){
+        const data = await fetch ('https://api.github.com/users#sumitWebDev');
+        const json = await data.json();
+        this.setState({
+            userInfo : json
+        })
+        console.log(this.state)
+        console.log(json)
     }
     render(){
         return <>
         <h1>Profile Class Component</h1>
-        <h2>{this.props.name}</h2>
-        <h3>{this.state.count}</h3>
-        <h3>{this.state.count1}</h3>
-        <button onClick = {()=>{
-            this.setState ({...this.state.count,count1:1})
-        }}>Set Count</button>
+        {/* <img src = {this.state.userInfo[0].avatar_url} />
+        <h2>{this.state.userInfo[0].login}</h2> */}
         </>
     }
 }
