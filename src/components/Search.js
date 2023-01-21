@@ -1,7 +1,6 @@
 import { useState } from 'react';
 const Search = (props) => {
-    const [searchText, setSearchText] = useState("test");
-    console.log(props.clickHandler)
+    const [searchText, setSearchText] = useState("");
     return (
         <div className="search-container">
             <input type="text" className='search-input' placeholder="Search" value={searchText}

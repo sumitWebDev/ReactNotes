@@ -17,9 +17,10 @@ const Header = function () {
                     <li><Link to="/about" >About</Link></li>
                     <li><Link to="/contact" >Contact</Link></li>
                     <li>Cart</li>
+                    <li> <Link to="/login" >Log In</Link> </li>
                 </ul>
-                {loggedIn === false ? <button onClick={(() => { setLoggedIn(true) })}>Login</button> : <button onClick={(() => { setLoggedIn(false) })}>Logout</button>}
 
+                {/* {loggedIn === false ? <button onClick={(() => { setLoggedIn(true) })}>Login</button> : <button onClick={(() => { setLoggedIn(false) })}>Logout</button>} */}
 
             </div>
         </div>)

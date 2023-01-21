@@ -8,7 +8,9 @@ import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import About from './src/components/About';
 import Error from '/src/components/Error';
 import Contact from './src/components/Contact';
-import RestaurantMenu from './src/components/RestaurantMenu'
+import RestaurantMenu from './src/components/RestaurantMenu';
+import Login from './src/components/Login'
+import Profile from './src/components/Profile'
 /**
  * Header
  * - Logo
@@ -50,7 +52,13 @@ const appRouter = createBrowserRouter([
         children: [
             {
                 path: '/about',
-                element: <About />
+                element: <About />,
+                children: [
+                    {
+                        path: 'profile',
+                        element: <Profile />
+                    },
+                ]
             },
             {
                 path: '/contact',
@@ -64,6 +72,10 @@ const appRouter = createBrowserRouter([
                 path: '/restaurant/:id',
                 element: <RestaurantMenu />
             },
+            {
+                path: '/login',
+                element: <Login />
+            }
         ]
     },
     {
