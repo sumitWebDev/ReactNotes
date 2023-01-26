@@ -4,7 +4,7 @@ import './src/styles/index.css';
 import Header from './src/components/Header'
 import Body from './src/components/Body'
 import Footer from './src/components/Footer'
-import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Outlet, createHashRouter } from 'react-router-dom';
 import About from './src/components/About';
 import Error from '/src/components/Error';
 import Contact from './src/components/Contact';
@@ -44,18 +44,18 @@ const AppLayout = () => { //Func Component
     )
 }
 
-const appRouter = createBrowserRouter([
+const appRouter = createHashRouter([
     {
         path: '/',
         element: <AppLayout />,
         errorElement: <Error />,
         children: [
             {
-                path: '/about',
+                path: 'about',
                 element: <About />,
                 children: [
                     {
-                        path: 'profile', //no need to give /profile. This results to --> localhost:1234/profile
+                        path: '/profile', //no need to give /profile. This results to --> localhost:1234/profile
                         element: <Profile />
                     },
                 ]
