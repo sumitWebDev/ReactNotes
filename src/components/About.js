@@ -26,19 +26,23 @@ import ProfileFunctionalComp from './ProfileClass'
  */
 class About extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
+        console.log("Parent - Constructor")
+    }
+    componentDidMount=() => {
+        console.log("Parent - ComponentDidMount")
     }
 
-
-
     render() {
+        console.log("Parent - Render")
         return (
             <>
                 <h1>About</h1>
                 <p>React Course</p>
-                <Profile />
-                <ProfileFunctionalComp name={'Sumit'} />
-
+                <Outlet />
+                {/* <Profile /> */}
+                {/* <ProfileFunctionalComp name={'First Child'} /> */}
+                {/* <ProfileFunctionalComp name={'Second Child'} /> */}
             </>
         )
     }

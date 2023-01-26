@@ -55,7 +55,7 @@ const appRouter = createBrowserRouter([
                 element: <About />,
                 children: [
                     {
-                        path: 'profile',
+                        path: 'profile', //no need to give /profile. This results to --> localhost:1234/profile
                         element: <Profile />
                     },
                 ]
