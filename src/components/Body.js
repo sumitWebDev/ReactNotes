@@ -4,7 +4,7 @@ import Shimmer from './Shimmer';
 import { Link } from 'react-router-dom'
 import Search from './Search'
 import filterData from '../utils/helper'
-
+import {RESTAURANT_DETAILS_URL} from '../../config'
 
 
 const Body = () => {
@@ -25,9 +25,9 @@ const Body = () => {
     }
     async function getRestaurants() {
 
-        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.60834135798303&lng=88.33092369139194&page_type=DESKTOP_WEB_LISTING");
+        const data = await fetch(RESTAURANT_DETAILS_URL);
         const json = await data.json();
-        const filteredApiData = json?.data?.cards[2]?.data?.data?.cards
+        const filteredApiData = json?.data?.cards[0]?.data?.data?.cards
         console.log(json)
         setAllRestaurants(filteredApiData)
         setFilteredRestaurants(filteredApiData)

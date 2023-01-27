@@ -44,7 +44,7 @@ const AppLayout = () => { //Func Component
     )
 }
 
-const appRouter = createHashRouter([
+const appRouter = createBrowserRouter([
     {
         path: '/',
         element: <AppLayout />,
@@ -55,7 +55,7 @@ const appRouter = createHashRouter([
                 element: <About />,
                 children: [
                     {
-                        path: '/profile', //no need to give /profile. This results to --> localhost:1234/profile
+                        path: 'profile', //no need to give /profile. This results to --> localhost:1234/profile
                         element: <Profile />
                     },
                 ]
