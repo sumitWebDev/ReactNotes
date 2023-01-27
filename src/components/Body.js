@@ -4,8 +4,9 @@ import Shimmer from './Shimmer';
 import { Link } from 'react-router-dom'
 import Search from './Search'
 import filterData from '../utils/helper'
-import {RESTAURANT_DETAILS_URL} from '../../config'
-
+import { RESTAURANT_DETAILS_URL } from '../../config'
+import Offline from './Offline';
+import useOnline from '../utils/useOnline';
 
 const Body = () => {
     const [allRestaurants, setAllRestaurants] = useState([]);
@@ -13,6 +14,11 @@ const Body = () => {
     useEffect(() => {
         getRestaurants()
     }, []);
+
+    const isOnline = useOnline();
+    if (isOnline === false) {
+        return <Offline />
+    }
     const clickHandler = (searchText) => {
 
         const data = filterData(searchText, allRestaurants);
@@ -27,7 +33,7 @@ const Body = () => {
 
         const data = await fetch(RESTAURANT_DETAILS_URL);
         const json = await data.json();
-        const filteredApiData = json?.data?.cards[0]?.data?.data?.cards
+        const filteredApiData = json?.data?.cards[2]?.data?.data?.cards
         console.log(json)
         setAllRestaurants(filteredApiData)
         setFilteredRestaurants(filteredApiData)
