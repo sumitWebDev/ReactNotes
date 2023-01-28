@@ -42,7 +42,7 @@ const Body = () => {
     return (allRestaurants.length === 0) ? <Shimmer /> : (
         <>
             <Search clickHandler={clickHandler} />
-            <div className="restaurant-lists">
+            <div className="flex flex-wrap">
 
                 {
                     (filteredRestaurants.length > 0) ? (filteredRestaurants.map((restaurant) =>

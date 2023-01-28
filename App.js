@@ -5,7 +5,6 @@ import Header from './src/components/Header'
 import Body from './src/components/Body'
 import Footer from './src/components/Footer'
 import { createBrowserRouter, RouterProvider, Outlet, createHashRouter } from 'react-router-dom';
-import About from './src/components/About';
 import Error from '/src/components/Error';
 import Contact from './src/components/Contact';
 import RestaurantMenu from './src/components/RestaurantMenu';
@@ -14,6 +13,7 @@ import Profile from './src/components/Profile'
 import Shimmer from './src/components/Shimmer';
 
 const Instamart = lazy(()=>import ('./src/components/Instamart'))
+const About = lazy(()=>import ('./src/components/About'))
 /**
  * Header
  * - Logo
@@ -55,7 +55,9 @@ const appRouter = createBrowserRouter([
         children: [
             {
                 path: 'about',
-                element: <About />,
+                element: <Suspense>
+                    <About />
+                    </Suspense>,
                 children: [
                     {
                         path: 'profile', //no need to give /profile. This results to --> localhost:1234/profile
