@@ -11,6 +11,7 @@ import RestaurantMenu from './src/components/RestaurantMenu';
 import Login from './src/components/Login'
 import Profile from './src/components/Profile'
 import Shimmer from './src/components/Shimmer';
+import UserContext from './src/utils/UserContext';
 
 const Instamart = lazy(()=>import ('./src/components/Instamart'))
 const About = lazy(()=>import ('./src/components/About'))
@@ -37,9 +38,10 @@ const About = lazy(()=>import ('./src/components/About'))
 const AppLayout = () => { //Func Component
     return (
         <React.Fragment>
-            <Header />
+             <Header />
             <Outlet />
             <Footer />
+
             {
 
             }

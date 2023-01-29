@@ -2,7 +2,7 @@ import React from "react"
 import { Outlet } from "react-router-dom"
 import Profile from "./Profile"
 import ProfileFunctionalComp from './ProfileClass'
-
+import UserContext from "../utils/UserContext"
 
 /**
  * Function based componet
@@ -38,6 +38,9 @@ class About extends React.Component {
         return (
             <>
                 <h1>About</h1>
+                <UserContext.Consumer>
+                    {({user})=> <p>{user.name}</p>}
+                </UserContext.Consumer>
                 <p>React Course</p>
                 <Outlet />
                 {/* <Profile /> */}
