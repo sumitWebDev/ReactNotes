@@ -20,7 +20,7 @@ const Header = function () {
                     <li className="px-3">Cart</li>
                     <li className="px-3"> <Link to="/instamart" >Instamart</Link> </li>
                     <li className="px-3"> <Link to="/login" >Log In</Link> </li>
-                     <li>{user.name}</li>
+                     <li className='text-red-900 font-bold'>{user.name}</li>
                 </ul>
 
                 {/* {loggedIn === false ? <button onClick={(() => { setLoggedIn(true) })}>Login</button> : <button onClick={(() => { setLoggedIn(false) })}>Logout</button>} */}

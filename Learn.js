@@ -1,39 +1,49 @@
-// const user = fetch('https://api.github.com/users/sumitWebDev');
+const posts = [{title: 'Post 1'}, {title:'Post 2'}];
 
-// console.log(user.data)
-// fetch('https://api.github.com/users/sumitWebDev')
-//     .then(function (data) {
-//         return data
-//     })
-//     .then(function (data) {
-//         console.log(data.json().name)
-//     })
+//get Posts
+function getPosts (){
+    setTimeout(()=>{
+        let output= '';
+        posts.forEach((post,index)=>{
+            output+= `<li>${post.title}</li>`
+        })
 
+    console.log(output)
+    document.body.innerHTML = output
+    },1000)
 
-//Promise Producer
-function checkCart(){
-    const cartValue = false;
-    const newPromise = new Promise(function(resolve,reject){
-        if(cartValue){
-            setTimeout(function(){
-                resolve('worked my promise');
-            },3000)
-        }
-        else if(!cartValue){
-            setTimeout(function(){
-                reject('not worked my promise');
-            },3000)
-        }
-    });
-    return newPromise
 }
 
 
-//Promise Consumer
-const cartOk = checkCart();
-console.log(cartOk)
-cartOk.then(function(data){
-    console.log(data)
-}).catch(function(err){
-    console.log(err)
-});
+
+
+//create posts
+
+function createPosts(){
+    return new Promise (function(resolve, reject){
+        setTimeout(()=>{
+            posts.push({title:'Post 3'})
+            reject('dfdfb')
+        },3000)
+    })
+}
+async function learning(){
+    try{
+        await createPosts();
+        getPosts()
+    }
+    catch(err){
+        console.log(err)
+    }
+
+}
+learning()
+//Using Promises
+// createPosts()
+// .then(function(data){
+//     console.log(data)
+//     getPosts()
+// })
+
+//getPosts()
+//posts.push({title:'Post 3'})

@@ -1,4 +1,4 @@
-import React,{lazy, Suspense } from 'react';
+import React,{lazy, Suspense,useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './src/styles/index.css';
 import Header from './src/components/Header'
@@ -35,16 +35,20 @@ const About = lazy(()=>import ('./src/components/About'))
  */
 
 
-const AppLayout = () => { //Func Component
+const AppLayout = () => {
+
+    const [user, setUser] = useState({
+        name:'Sumit',
+        email: "sumit@gmail.com"
+    })
     return (
         <React.Fragment>
-             <Header />
-            <Outlet />
-            <Footer />
+            <UserContext.Provider value={{user: user,setUser:setUser}}>
+                <Header />
+                <Outlet />
+                <Footer />
+            </UserContext.Provider>
 
-            {
-
-            }
         </React.Fragment>
     )
 }

@@ -1,5 +1,5 @@
 import RestaurantCard from './RestaurantCard'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import Shimmer from './Shimmer';
 import { Link } from 'react-router-dom'
 import Search from './Search'
@@ -7,10 +7,12 @@ import filterData from '../utils/helper'
 import { RESTAURANT_DETAILS_URL } from '../../config'
 import Offline from './Offline';
 import useOnline from '../utils/useOnline';
+import UserContext from '../utils/UserContext';
 
 const Body = () => {
     const [allRestaurants, setAllRestaurants] = useState([]);
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+    const {user, setUser} = useContext(UserContext)
     useEffect(() => {
         getRestaurants()
     }, []);
@@ -42,6 +44,8 @@ const Body = () => {
     return (allRestaurants.length === 0) ? <Shimmer /> : (
         <>
             <Search clickHandler={clickHandler} />
+            <input value= {user.name} onChange={(e)=>{setUser({...user,name: e.target.value})} }/>
+            <input value= {user.email} onChange={(e)=>{setUser({...user, email:e.target.value})} }/>
             <div className="flex flex-wrap">
 
                 {

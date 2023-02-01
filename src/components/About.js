@@ -39,7 +39,7 @@ class About extends React.Component {
             <>
                 <h1>About</h1>
                 <UserContext.Consumer>
-                    {({user})=> <p>{user.name}</p>}
+                    {({user})=> <p className='text-red-900 font-bold'>{user.name}</p>}
                 </UserContext.Consumer>
                 <p>React Course</p>
                 <Outlet />
