@@ -12,7 +12,10 @@ import Login from './src/components/Login'
 import Profile from './src/components/Profile'
 import Shimmer from './src/components/Shimmer';
 import UserContext from './src/utils/UserContext';
-
+import Test from './src/components/Test';
+import {Provider} from 'react-redux'
+import store from './src/utils/store'
+import Cart from './src/components/Cart';
 const Instamart = lazy(()=>import ('./src/components/Instamart'))
 const About = lazy(()=>import ('./src/components/About'))
 /**
@@ -42,14 +45,15 @@ const AppLayout = () => {
         email: "sumit@gmail.com"
     })
     return (
-        <React.Fragment>
+        <Provider store={store}>
+            {/* <Test/> */}
             <UserContext.Provider value={{user: user,setUser:setUser}}>
                 <Header />
                 <Outlet />
                 <Footer />
             </UserContext.Provider>
 
-        </React.Fragment>
+        </Provider>
     )
 }
 
@@ -88,6 +92,11 @@ const appRouter = createBrowserRouter([
                 element: <Suspense fallback={<Shimmer/>}>
                     <Instamart />
                     </Suspense>
+            },
+            {
+                path: '/cart',
+                element:
+                    <Cart />
             },
             {
                 path: '/login',

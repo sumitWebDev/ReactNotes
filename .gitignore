@@ -2,3 +2,5 @@
 node_modules
 .parcel-cache/
 dist/
+src/components/Test.js
+24-12-2022/

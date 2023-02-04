@@ -7,4 +7,8 @@ const UserContext = createContext({user:{
 
 UserContext.displayName = 'User Context';
 
+export const TestContext = createContext('dark')
+
+UserContext.displayName = 'Test Context';
+
 export default UserContext;
