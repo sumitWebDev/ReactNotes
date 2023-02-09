@@ -4,3 +4,4 @@ node_modules
 dist/
 src/components/Test.js
 24-12-2022/
+/coverage
