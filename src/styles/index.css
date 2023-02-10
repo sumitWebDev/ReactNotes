@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.shimmer-card{
+    background-color: grey;
+    height: 200px;
+    width: 200px;
+}

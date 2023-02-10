@@ -1,9 +1,11 @@
 import { render } from "react-dom"
 
-export default Shimmer = () => {
-    return <div className="restaurant-lists">
-    <div className="shimmer-card">
+const Shimmer = () => {
+    return <div className="restaurant-lists" data-testid='shimmer' >
+    <div  className="shimmer-card">
 
     </div>
     </div>
 }
+
+export default Shimmer

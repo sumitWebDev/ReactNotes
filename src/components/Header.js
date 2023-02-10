@@ -21,10 +21,10 @@ const Header = function () {
                     <li className="px-3"><Link to="/" >Home</Link></li>
                     <li className="px-3"><Link to="/about" >About</Link></li>
                     <li className="px-3"><Link to="/contact" >Contact</Link></li>
-                    <li className="px-3"><Link to="/cart" >Cart {cartItem.length} </Link></li>
+                    <li className="px-3"><Link to="/cart" ><span data-testid='cart'>Cart {cartItem.length}</span>  </Link></li>
                     <li className="px-3"> <Link to="/instamart" >Instamart</Link> </li>
                     <li className="px-3"> <Link to="/login" >Log In</Link> </li>
-                    <li>{isOnline ? "✅" : "🔴"}</li>
+                    <li data-testid='online'>{isOnline ? "✅" : "🔴"}</li>
                      <li className='text-red-900 font-bold'>{user.name}</li>
                 </ul>
 

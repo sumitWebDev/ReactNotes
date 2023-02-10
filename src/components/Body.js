@@ -36,7 +36,6 @@ const Body = () => {
         const data = await fetch(RESTAURANT_DETAILS_URL);
         const json = await data.json();
         const filteredApiData = json?.data?.cards[2]?.data?.data?.cards
-        console.log(json)
         setAllRestaurants(filteredApiData)
         setFilteredRestaurants(filteredApiData)
     }
@@ -46,7 +45,7 @@ const Body = () => {
             <Search clickHandler={clickHandler} />
             <input value= {user.name} onChange={(e)=>{setUser({...user,name: e.target.value})} }/>
             <input value= {user.email} onChange={(e)=>{setUser({...user, email:e.target.value})} }/>
-            <div className="flex flex-wrap">
+            <div className="flex flex-wrap" data-testid="res-list">
 
                 {
                     (filteredRestaurants.length > 0) ? (filteredRestaurants.map((restaurant) =>
